@@ -1,9 +1,9 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { StyleSheet } from 'react-native';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
+import { Colors, palette, Typography, Shadows } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
@@ -13,13 +13,17 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
+        headerShown: true,
+        headerStyle: styles.header,
+        headerTitleStyle: styles.headerTitle,
         tabBarButton: HapticTab,
+        tabBarStyle: styles.tabBar,
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Catálogo de Carros',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
@@ -33,3 +37,18 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBar: {
+    borderTopWidth: 0,
+    backgroundColor: palette.card,
+    ...Shadows.medium,
+  },
+  header: {
+    backgroundColor: palette.card,
+  },
+  headerTitle: {
+    ...Typography.h2,
+    color: palette.text,
+  },
+});
