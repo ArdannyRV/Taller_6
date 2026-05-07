@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { ActivityIndicator, View } from 'react-native'
 import { Stack, useSegments, useRouter } from 'expo-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { AuthProvider, useAuth } from '@/context/AuthContext'
+import { AuthProvider, useAuth } from '@/src/context/AuthContext'
 
 const qc = new QueryClient()
 
